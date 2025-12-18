@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WalletWise | Personal Finance Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">WalletWise.</div>
+            <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+        </header>
+
+        <main class="dashboard-grid">
+            <section class="card balance-card">
+                <div class="card-header">
+                    <h2 class="card-title">Current Balance</h2>
+                    <span class="currency">USD</span>
+                </div>
+                <div class="balance-amount" id="balance-amount">$0.00</div>
+                
+                <div class="summary-row">
+                    <div class="summary-item income">
+                        <i class="fas fa-arrow-up"></i>
+                        <div>
+                            <span>Income</span>
+                            <div id="total-income">$0.00</div>
+                        </div>
+                    </div>
+                    <div class="summary-item expense">
+                        <i class="fas fa-arrow-down"></i>
+                        <div>
+                            <span>Expenses</span>
+                            <div id="total-expenses">$0.00</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card transaction-card">
+                <h2 class="card-title">Add New Transaction</h2>
+                <form id="transaction-form">
+                    <div class="form-group">
+                        <label for="type">Type</label>
+                        <select id="type" required>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" placeholder="e.g., Salary, Groceries" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Amount ($)</label>
+                        <input type="number" id="amount" placeholder="0.00" step="0.01" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">Category (for Expenses)</label>
+                        <select id="category">
+                            <option value="none">Select Category</option>
+                            <option value="Food">Food</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Utilities">Utilities</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Health">Health</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Add Transaction</button>
+                </form>
+            </section>
+
+            <section class="card history-card">
+                <h2 class="card-title">Transaction History</h2>
+                <ul id="history-list">
+                    <li class="empty-state">No transactions yet.</li>
+                </ul>
+            </section>
+
+            <section class="card chart-card">
+                <h2 class="card-title">Expense Categories</h2>
+                <div class="chart-container">
+                    <canvas id="expense-chart"></canvas>
+                </div>
+                <div id="chart-legend" class="chart-legend"></div>
+            </section>
+        </main>
+
+        <footer>
+            Built by <b>Sirojiddin Yoqubjonov</b>
+            <a href="https://github.com/codersirojiddin" target="_blank"><i class="fab fa-github"></i></a>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
